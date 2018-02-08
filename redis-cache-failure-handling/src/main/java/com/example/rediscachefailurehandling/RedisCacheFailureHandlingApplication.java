@@ -8,8 +8,8 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching
 public class RedisCacheFailureHandlingApplication {
 
-	public static void main(String[] args) {
-		new SpringApplicationBuilder().sources(RedisCacheFailureHandlingApplication.class)
-				.profiles("app").run(args);
-	}
+    public static void main(String[] args) {
+        new SpringApplicationBuilder().sources(RedisCacheFailureHandlingApplication.class)
+                .profiles("app").run(args);
+    }
 }
