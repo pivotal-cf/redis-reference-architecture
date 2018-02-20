@@ -5,7 +5,7 @@ This sample Spring App demonstrates using Redis as a cache for a time-intensive 
 The sample app takes requests at `/token?id=<something>` and returns a token.
 When Redis is missing or does not have the id cached, it creates a token. When Redis comes back up, continue to use the cache.
 
-![Process Diagram](/process_diagram.svg "Process Diagram")
+![Process Diagram](/assets/process_diagram.svg "Process Diagram")
 
 ## Run locally
 
