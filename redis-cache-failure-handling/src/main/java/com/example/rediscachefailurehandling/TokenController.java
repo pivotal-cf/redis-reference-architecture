@@ -17,6 +17,9 @@ public class TokenController {
 
     @RequestMapping(method= RequestMethod.GET)
     public @ResponseBody Token getToken(@RequestParam(value="id") String id) {
-        return tokenRepository.find(id);
+        long startTime = System.currentTimeMillis();
+        Token token = tokenRepository.find(id);
+        token.duration = System.currentTimeMillis() - startTime;
+        return token;
     }
 }

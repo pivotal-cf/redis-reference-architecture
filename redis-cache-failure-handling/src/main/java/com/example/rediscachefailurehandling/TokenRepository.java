@@ -17,7 +17,7 @@ public class TokenRepository {
 
     private static Token verySlowGenerateToken(String id) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
