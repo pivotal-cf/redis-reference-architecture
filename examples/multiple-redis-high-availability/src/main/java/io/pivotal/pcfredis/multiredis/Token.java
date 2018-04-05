@@ -5,15 +5,17 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Token implements Serializable {
-    private /*final*/ String data;
-    private /*final*/ String id;
+    private String data;
+    private String id;
     public long duration;
 
-    public void setDuration(long duration) {
-        this.duration = duration;
+    public Token() {
     }
 
-    public Token() {
+    public Token(String id, String data) {
+        this.id = id;
+        this.data = data;
+        this.duration = 0;
     }
 
     public void setData(String data) {
@@ -24,10 +26,8 @@ public class Token implements Serializable {
         this.id = id;
     }
 
-    public Token(String id, String data) {
-        this.id = id;
-        this.data = data;
-        this.duration = 0;
+    public void setDuration(long duration) {
+        this.duration = duration;
     }
 
     public String getData() {
