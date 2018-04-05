@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Start-Class: com.example.multiredisha.MultipleRedisHighAvailabilityApp
- lication
-Main-Class: org.springframework.boot.loader.JarLauncher
-
