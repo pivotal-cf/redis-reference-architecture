@@ -1,4 +1,4 @@
-package com.example.multiredisha;
+package io.pivotal.pcfredis.multiredis;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

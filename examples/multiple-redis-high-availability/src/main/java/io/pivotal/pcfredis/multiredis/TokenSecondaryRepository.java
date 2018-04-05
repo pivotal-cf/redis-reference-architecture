@@ -1,4 +1,4 @@
-package com.example.multiredisha;
+package io.pivotal.pcfredis.multiredis;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;

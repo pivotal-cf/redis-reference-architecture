@@ -1,4 +1,4 @@
-package com.example.multiredisha;
+package io.pivotal.pcfredis.multiredis;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

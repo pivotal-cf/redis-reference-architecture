@@ -1,5 +1,6 @@
-package com.example.multiredisha;
+package io.pivotal.pcfredis.multiredis;
 
+import io.pivotal.pcfredis.multiredis.Token;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
