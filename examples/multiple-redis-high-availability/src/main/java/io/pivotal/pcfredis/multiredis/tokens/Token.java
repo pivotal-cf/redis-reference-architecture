@@ -1,4 +1,4 @@
-package io.pivotal.pcfredis.multiredis;
+package io.pivotal.pcfredis.multiredis.tokens;
 
 
 import java.io.Serializable;
