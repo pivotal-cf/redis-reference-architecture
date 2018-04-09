@@ -27,7 +27,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 
-
 @Configuration
 @Profile("default")
 class MultipleRedisHighAvailabilityDefaultConfig {
@@ -87,7 +86,7 @@ class MultipleRedisHighAvailabilityCloudConfig {
         Cloud cloud = cloudFactory.getCloud();
         List<RedisServiceInfo> redisServiceInfos = cloud.getServiceInfosByType(RedisServiceInfo.class);
 
-        assert redisServiceInfos.size() == 2: "There should be 2 redis service instances bound to this App. " + redisServiceInfos.size() + " found.";
+        assert redisServiceInfos.size() == 2 : "There should be 2 redis service instances bound to this App. " + redisServiceInfos.size() + " found.";
         return redisServiceInfos;
     }
 
@@ -96,10 +95,10 @@ class MultipleRedisHighAvailabilityCloudConfig {
     @Bean(name = "primaryRedisTemplate")
     public RedisTemplate primaryRedisTemplate() {
         RedisTemplate redisTemplate = new RedisTemplate();
-        RedisConnectionFactory primaryRedisConnectionFactory = getRedisConnectionFactory(this.redisInfos.get(0));
+        RedisServiceInfo primaryInfo = redisInfos.get(0);
+        RedisConnectionFactory primaryRedisConnectionFactory = getRedisConnectionFactory(primaryInfo);
 
         redisTemplate.setConnectionFactory(primaryRedisConnectionFactory);
-
         return redisTemplate;
     }
 
@@ -107,7 +106,9 @@ class MultipleRedisHighAvailabilityCloudConfig {
     @Bean(name = "secondaryRedisTemplate")
     public RedisTemplate secondaryRedisTemplate() {
         RedisTemplate redisTemplate = new RedisTemplate();
-        RedisConnectionFactory secondaryRedisConnectionFactory = getRedisConnectionFactory(this.redisInfos.get(1));
+        RedisServiceInfo secondaryInfo = redisInfos.get(1);
+        RedisConnectionFactory secondaryRedisConnectionFactory = getRedisConnectionFactory(secondaryInfo);
+
         redisTemplate.setConnectionFactory(secondaryRedisConnectionFactory);
         return redisTemplate;
     }
@@ -126,12 +127,14 @@ class MultipleRedisHighAvailabilityCloudConfig {
 @Component
 @Profile("default")
 @ConfigurationProperties(prefix = "spring.redis.secondary")
-class SecondaryRedisProperty extends RedisStandaloneConfiguration { }
+class SecondaryRedisProperty extends RedisStandaloneConfiguration {
+}
 
 @Component
 @Profile("default")
 @ConfigurationProperties(prefix = "spring.redis.primary")
-class PrimaryRedisProperty extends RedisStandaloneConfiguration {}
+class PrimaryRedisProperty extends RedisStandaloneConfiguration {
+}
 
 @Configuration
 class RedisCacheConfig implements CachingConfigurer {
@@ -190,20 +193,19 @@ class RedisCacheError implements CacheErrorHandler {
     @Override
     public void handleCacheGetError(RuntimeException exception,
                                     Cache cache, Object key) {
-        //Do something on Get Error i cache
     }
+
     @Override
     public void handleCachePutError(RuntimeException exception, Cache cache,
                                     Object key, Object value) {
-        //Do something on Put error in cache
     }
+
     @Override
     public void handleCacheEvictError(RuntimeException exception, Cache cache,
                                       Object key) {
-        //Do something on error while Evict cache
     }
+
     @Override
-    public void handleCacheClearError(RuntimeException exception,Cache cache){
-        //Do something on error while clearing cache
+    public void handleCacheClearError(RuntimeException exception, Cache cache) {
     }
 }

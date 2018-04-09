@@ -5,6 +5,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import static io.pivotal.pcfredis.multiredis.tokens.VerySlowQueryer.verySlowGenerateToken;
 import static java.util.UUID.randomUUID;
 
 @Component
@@ -35,7 +36,11 @@ class TokenRepositorySecondaryCache {
         return verySlowGenerateToken(id);
     }
 
-    private static Token verySlowGenerateToken(String id) {
+}
+
+
+class VerySlowQueryer {
+    static Token verySlowGenerateToken(String id) {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {

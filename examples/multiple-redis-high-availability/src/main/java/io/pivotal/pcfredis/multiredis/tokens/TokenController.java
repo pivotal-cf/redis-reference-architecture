@@ -20,9 +20,9 @@ public class TokenController {
     @RequestMapping(method= RequestMethod.GET)
     public @ResponseBody Token getToken(@RequestParam(value="id") String id) {
         long startTime = System.currentTimeMillis();
-//        System.out.println("---> Primary cache miss for id: '" + id + "'");
         Token token = tokens.find(id);
-        token.duration = System.currentTimeMillis() - startTime;
+        long timeTaken = System.currentTimeMillis() - startTime;
+        token.setDuration(timeTaken);
         return token;
     }
 }
