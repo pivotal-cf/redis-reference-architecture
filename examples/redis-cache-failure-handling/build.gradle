@@ -28,3 +28,11 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+
+tasks.withType(Test) {
+	testLogging {
+		exceptionFormat "full"
+		events "passed", "failed"
+	}
+}
