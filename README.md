@@ -15,6 +15,7 @@ This example architecture uses only one Redis server and is intended for lightwe
 
 ## multiple-redis-high-availability
 This example architecture uses two Redis servers in order to ensure availability of the Redis cache in the event of downtime for one server.
+Note that this does not guarantee any additional uptime beyond the SLI/SLO.
 
 ### Uptime during an on-demand Redis upgrade
 During an upgrade-all errand that is available to on-demand Redis services, all Redis servers could
