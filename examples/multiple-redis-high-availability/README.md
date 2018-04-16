@@ -7,7 +7,7 @@ This could include lookup in another data service, or another slow process such 
   - the method is slow to run
   - the method always returns the same result for a given input (similar to a pure function, but may have idempotent side effects)
   - the method is called repeatedly with the same input
-* Appropriate if your App cannot handle the cache being unavailable for even a few minutes during upgrades
+* Appropriate if having one cache available while another is down is important to your App
 * Not appropriate if you require direct access and manipulation of the underlying Redis cache
 
 ---
