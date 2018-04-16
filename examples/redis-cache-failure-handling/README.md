@@ -1,6 +1,13 @@
 # Cache Failure Handling Example
 
 This sample Spring App demonstrates using Redis as a cache for a time-intensive method. This could include lookup in another data service, or another slow process such as page generation.
+* Appropriate if you have a method that will benefit from caching:
+  - the method is slow to run
+  - the method always returns the same result for a given input (similar to a pure function, but may have idempotent side effects)
+  - the method is called repeatedly with the same input
+* Appropriate if your App can handle a short period of time when the cache is unavailable
+  - Redis for PCF service instances become unavailable for a few minutes during upgrades
+* Not appropriate if you require direct access and manipulation of the underlying Redis cache
 
 The sample app takes requests at `/token?id=<something>` and returns a token.
 When Redis is missing or does not have the id cached, it creates a token. When Redis comes back up, continue to use the cache.
