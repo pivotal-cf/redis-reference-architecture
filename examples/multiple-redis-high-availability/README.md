@@ -10,6 +10,8 @@ This could include lookup in another data service, or another slow process such 
 * Appropriate if your App cannot handle the cache being unavailable for even a few minutes during upgrades
 * Not appropriate if you require direct access and manipulation of the underlying Redis cache
 
+---
+
 The sample app takes requests at `/token?id=<something>` and returns a token.
 This token is cached in both Redis servers and fetched from the primary Redis server by default.
 If there is a a cache miss in the primary Redis server or that server is down, the token will be fetched from the secondary Redis server.

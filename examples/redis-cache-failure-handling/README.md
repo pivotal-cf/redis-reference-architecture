@@ -9,6 +9,8 @@ This sample Spring App demonstrates using Redis as a cache for a time-intensive 
   - Redis for PCF service instances become unavailable for a few minutes during upgrades
 * Not appropriate if you require direct access and manipulation of the underlying Redis cache
 
+---
+
 The sample app takes requests at `/token?id=<something>` and returns a token.
 When Redis is missing or does not have the id cached, it creates a token. When Redis comes back up, continue to use the cache.
 
