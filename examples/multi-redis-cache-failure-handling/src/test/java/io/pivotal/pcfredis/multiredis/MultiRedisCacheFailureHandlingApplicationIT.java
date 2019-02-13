@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MultipleRedisHighAvailabilityApplicationIT {
+public class MultiRedisCacheFailureHandlingApplicationIT {
 
     private String tokenID = "123";
     private Token token = new Token(tokenID, "token-data");

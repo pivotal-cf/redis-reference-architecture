@@ -29,13 +29,13 @@ import java.util.List;
 
 @Configuration
 @Profile("default")
-class MultipleRedisHighAvailabilityDefaultConfig {
+class MultiRedisCacheFailureHandlingDefaultConfig {
 
     private final PrimaryRedisProperty primaryRedisProperty;
     private final SecondaryRedisProperty secondaryRedisProperty;
 
     @Autowired
-    public MultipleRedisHighAvailabilityDefaultConfig(PrimaryRedisProperty primaryRedisProperty, SecondaryRedisProperty secondaryRedisProperty) {
+    public MultiRedisCacheFailureHandlingDefaultConfig(PrimaryRedisProperty primaryRedisProperty, SecondaryRedisProperty secondaryRedisProperty) {
         this.primaryRedisProperty = primaryRedisProperty;
         this.secondaryRedisProperty = secondaryRedisProperty;
     }
@@ -72,12 +72,12 @@ class MultipleRedisHighAvailabilityDefaultConfig {
 
 @Configuration
 @Profile("cloud")
-class MultipleRedisHighAvailabilityCloudConfig {
+class MultiRedisCacheFailureHandlingCloudConfig {
 
     private List<RedisServiceInfo> redisInfos;
 
     @Autowired
-    public MultipleRedisHighAvailabilityCloudConfig() {
+    public MultiRedisCacheFailureHandlingCloudConfig() {
         this.redisInfos = this.getRedisServiceInfos();
     }
 

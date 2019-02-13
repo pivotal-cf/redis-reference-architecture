@@ -6,9 +6,9 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @EnableCaching
-public class MultipleRedisHighAvailabilityApplication {
+public class MultiRedisCacheFailureHandlingApplication {
     public static void main(String[] args) {
-        new SpringApplicationBuilder().sources(MultipleRedisHighAvailabilityApplication.class)
+        new SpringApplicationBuilder().sources(MultiRedisCacheFailureHandlingApplication.class)
                 .profiles("app").run(args);
     }
 }

@@ -19,7 +19,7 @@ Redis can be used for storing a wide range of data. No reference architecture is
     - Redis for PCF service instances become unavailable for a few minutes during upgrades
   * Not appropriate if you require direct access and manipulation of the underlying Redis cache
 
-2. [__Multiple Redis Cache Failure Handling__](https://github.com/pivotal-cf/redis-reference-architecture/tree/master/examples/multiple-redis-high-availability)
+2. [__Multiple Redis Cache Failure Handling__](https://github.com/pivotal-cf/redis-reference-architecture/tree/master/examples/multi-redis-cache-failure-handling)
   > This architecture extends the first example to use two Redis services to increase availability of the Redis cache in the event of downtime for one Redis service.
   * Appropriate if you have a method that will benefit from caching
   * Appropriate if having one cache available while another is down is important to your App

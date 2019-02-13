@@ -39,7 +39,7 @@ redis-server --port <port2>
 ```
 Then start the Spring app:
 ```
-cd examples/multiple-redis-high-availability
+cd examples/multi-redis-cache-failure-handling
 gradle bootRun
 ```
 
@@ -60,7 +60,7 @@ gradle build
 ```
 Push the app, non-started, by providing the path to the app jar file:
 ```
-cf push --no-start <APP_NAME> -p build/libs/multiple-redis-high-availability*.jar
+cf push --no-start <APP_NAME> -p build/libs/multi-redis-cache-failure-handling*.jar
 ```
 This will print the route to the App, usually '<APP_NAME>.apps.<CF_URL>.com'.
 
