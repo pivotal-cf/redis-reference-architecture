@@ -11,7 +11,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.beans.SamePropertyValuesAs.samePropertyValuesAs;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
@@ -44,7 +44,7 @@ public class RedisCacheFailureHandlingApplicationTests {
 	public void should_get_token_from_cache() {
 		mockCache(manager, new tokenValueWrapper());
 		Token finalToken = retrieveToken(tokenId);
-		assertThat(finalToken, is(token));
+		assertThat(finalToken, samePropertyValuesAs(token));
 	}
 
 	private Token retrieveToken(String tokenId) {
