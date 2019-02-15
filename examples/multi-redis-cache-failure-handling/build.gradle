@@ -25,7 +25,7 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('redis.clients:jedis:2.9.0')
+    compile('redis.clients:jedis:3.0.0')
     compile('org.springframework.cloud:spring-cloud-cloudfoundry-connector')
     testCompile('junit:junit:4.12')
     testCompile('org.springframework.boot:spring-boot-starter-test')
