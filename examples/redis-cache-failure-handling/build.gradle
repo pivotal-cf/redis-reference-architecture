@@ -28,6 +28,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	implementation 'io.pivotal.cfenv:java-cfenv-boot:1.0.1.RELEASE'
 }
 
 
