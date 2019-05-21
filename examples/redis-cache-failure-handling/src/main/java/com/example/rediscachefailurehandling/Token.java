@@ -1,22 +1,24 @@
 package com.example.rediscachefailurehandling;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 @Data
-@NoArgsConstructor
 public class Token implements Serializable {
+    @JsonProperty
     private String data;
+    @JsonProperty
     private String id;
+    @JsonProperty
     public long duration;
 
-    public Token(String id, String data) {
+    public Token() {}
+
+    public Token(String id, String data, long duration) {
         this.id = id;
         this.data = data;
-        this.duration = 0;
+        this.duration = duration;
     }
-
 }
