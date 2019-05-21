@@ -1,7 +1,7 @@
 ---
 applications:
-  - name: redis-cache
+  - name: redis-cache-example
     memory: 1G
     buildpacks:
-    - java_buildpack_offline
+    - java_buildpack
     path: build/libs/redis-cache-failure-handling-0.0.1-SNAPSHOT.jar

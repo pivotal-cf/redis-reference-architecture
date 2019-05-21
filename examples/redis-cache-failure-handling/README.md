@@ -42,7 +42,7 @@ gradle build
 ```
 Push the app by providing the path to the app jar file:
 ```
-cf push <APP_NAME> -p build/libs/redis-cache-failure-handling*.jar
+cf push --no-start
 ```
 This will print the route to the App, usually 'apps.<CF_URL>.com'.
 
@@ -53,13 +53,10 @@ Create a redis service. Spring auto-configures Redis connection using the servic
  cf create-service  p.redis         cache-small   <SERVICE_INSTANCE_NAME>
 ```
 
-Bind your redis service, and restage the App:
+Bind your redis service, and start the App:
 ```
-cf bind-service <APP_NAME> <SERVICE_INSTANCE_NAME>
-cf restage <APP_NAME>
+cf bind-service redis-cache-example <SERVICE_INSTANCE_NAME>
+cf start redis-cache-example
 ```
 
 Reference: https://docs.cloudfoundry.org/buildpacks/java/configuring-service-connections/spring-service-bindings.html#redis
-
-## Errors
-* `RedisCacheConfig` and `RedisCacheError` intercept the errors when Redis is missing. This allows the request to fall through to the expensive token generation call.
