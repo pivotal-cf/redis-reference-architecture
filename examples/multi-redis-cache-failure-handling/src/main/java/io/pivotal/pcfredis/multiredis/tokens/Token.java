@@ -1,12 +1,17 @@
 package io.pivotal.pcfredis.multiredis.tokens;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public class Token implements Serializable {
+    @JsonProperty
     private String data;
+    @JsonProperty
     private String id;
+    @JsonProperty
     public long duration;
 
     public Token() {
