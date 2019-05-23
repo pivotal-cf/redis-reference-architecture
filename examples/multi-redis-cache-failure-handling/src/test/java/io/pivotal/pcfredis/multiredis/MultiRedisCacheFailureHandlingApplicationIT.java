@@ -41,7 +41,7 @@ public class MultiRedisCacheFailureHandlingApplicationIT {
 
     @Test
     public void
-    should_look_in_the_first_redis_for_tokens() {
+    shouldLookInTheFirstRedisForTokens() {
         mockCache(primaryCacheManager, new tokenValueWrapper());
 
         Token finalToken = retrieveToken(tokenID);
@@ -50,7 +50,7 @@ public class MultiRedisCacheFailureHandlingApplicationIT {
 
     @Test
     public void
-    should_look_in_the_second_redis_when_the_first_does_not_have_it() {
+    shouldLookInTheSecondRedisWhenTheFirstDoesNotHaveIt() {
         mockCache(primaryCacheManager, null);
         mockCache(secondaryCacheManager, new tokenValueWrapper());
 
@@ -61,7 +61,7 @@ public class MultiRedisCacheFailureHandlingApplicationIT {
 
     @Test
     public void
-    should_create_a_token_when_token_is_not_in_either_cache() {
+    shouldCreateATokenWhenTokenIsNotInEitherCache() {
         String tokenId = "new-" + randomUUID().toString();
         mockCache(primaryCacheManager, null);
         mockCache(secondaryCacheManager, null);

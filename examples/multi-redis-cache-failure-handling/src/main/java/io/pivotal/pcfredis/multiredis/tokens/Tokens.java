@@ -61,6 +61,7 @@ public class Tokens {
         this.tokenRepository = tokenRepository;
     }
 
+    @Cacheable("tokens")
     public Token find(String id) {
         return this.tokenRepository.find(id);
     }

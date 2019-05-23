@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurer;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.cache.interceptor.CacheResolver;
 import org.springframework.cache.interceptor.KeyGenerator;
@@ -78,6 +79,7 @@ class MultiRedisCacheFailureHandlingCloudConfig {
 
     @Autowired
     public MultiRedisCacheFailureHandlingCloudConfig() {
+        System.out.println("Wiring MultiRedisCacheFailureHandlingConfig.");
         this.redisInfos = this.getRedisServiceInfos();
     }
 
@@ -137,7 +139,7 @@ class PrimaryRedisProperty extends RedisStandaloneConfiguration {
 }
 
 @Configuration
-class RedisCacheConfig implements CachingConfigurer {
+class RedisCacheConfig extends CachingConfigurerSupport {
 
     private final RedisTemplate primaryRedisTemplate;
 
@@ -168,44 +170,4 @@ class RedisCacheConfig implements CachingConfigurer {
                 .build();
     }
 
-    @Override
-    public CacheManager cacheManager() {
-        return null;
-    }
-
-    @Override
-    public CacheResolver cacheResolver() {
-        return null;
-    }
-
-    @Override
-    public KeyGenerator keyGenerator() {
-        return null;
-    }
-
-    @Override
-    public CacheErrorHandler errorHandler() {
-        return new RedisCacheError();
-    }
-}
-
-class RedisCacheError implements CacheErrorHandler {
-    @Override
-    public void handleCacheGetError(RuntimeException exception,
-                                    Cache cache, Object key) {
-    }
-
-    @Override
-    public void handleCachePutError(RuntimeException exception, Cache cache,
-                                    Object key, Object value) {
-    }
-
-    @Override
-    public void handleCacheEvictError(RuntimeException exception, Cache cache,
-                                      Object key) {
-    }
-
-    @Override
-    public void handleCacheClearError(RuntimeException exception, Cache cache) {
-    }
 }
