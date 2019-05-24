@@ -19,40 +19,6 @@ Finally, if neither server contains the token or neither server is up, then the 
 
 ![Process Diagram](/assets/multi-redis-diagram.svg "Process Diagram")
 
-
-### Configuring Redis Parallel Upgrades
-The Redis for PCF tile v1.13+ makes it possible to upgrade On-Demand Redis service instances in parallel. This is configured through the `max-in-flight` and `canaries` settings. Prior to 1.13, all service instances are upgraded one at a time. If your tile is configured to upgrade in parallel, it is possible that the two Redis services bound to your App are upgraded at the same time. This would make the cache completely unavailable.
-
-
-## Run locally
-Start redis-servers with the ports corresponding to the ports defined in [application.properties](src/main/resources/application.properties).
-If you desire different ports or hosts, simply update your `application.properties` to correspond to your desired setup.
-
-Start the first local redis-server:
-```
-redis-server --port <port1>
-```
-
-Start the second local redis-server:
-```
-redis-server --port <port2>
-```
-Then start the Spring app:
-```
-cd examples/multi-redis-cache-failure-handling
-gradle bootRun
-```
-
-Visit in your browser:
-```
-http://localhost:8080/token?id=<ANY_ID>
-```
-Observe that the `duration` field of the response is long the first time each token is passed.
-This decreases drastically with subsequent calls when the Redis cache is used.
-Terminate the primary Redis cache process and see that it still follows the previous `duration` behaviour.
-Repeat this with both Redis cache processes down and see that all queries result in a long `duration` field.
-
-
 ## Run on CF
 Build the project:
 ```
@@ -60,7 +26,7 @@ gradle build
 ```
 Push the app, non-started, by providing the path to the app jar file:
 ```
-cf push --no-start <APP_NAME> -p build/libs/multi-redis-cache-failure-handling*.jar
+cf push --no-start
 ```
 This will print the route to the App, usually '<APP_NAME>.apps.<CF_URL>.com'.
 
@@ -82,4 +48,4 @@ cf start <APP_NAME>
 Reference: https://docs.cloudfoundry.org/buildpacks/java/configuring-service-connections/spring-service-bindings.html#redis
 
 ## Errors
-* `RedisCacheConfig` and `RedisCacheError` intercept the errors when Redis is missing. This allows the request to fall through to the expensive token generation call.
+* `RedisCacheConfig` intercepts the errors when Redis is missing. This allows the request to fall through to the expensive token generation call.
