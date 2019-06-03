@@ -59,4 +59,8 @@ cf bind-service redis-cache-example <SERVICE_INSTANCE_NAME>
 cf start redis-cache-example
 ```
 
-Reference: https://docs.cloudfoundry.org/buildpacks/java/configuring-service-connections/spring-service-bindings.html#redis
+
+## How this works
+This example app is using [java-cfenv](https://github.com/pivotal-cf/java-cfenv) to discover service instance credentials.
+
+In order for this to work we need to make some slight modification to the `manifest.yml`, as described in https://spring.io/blog/2019/02/15/introducing-java-cfenv-a-new-library-for-accessing-cloud-foundry-services

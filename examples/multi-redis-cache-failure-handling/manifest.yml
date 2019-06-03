@@ -1,7 +1,0 @@
----
-applications:
-- name: redis-multi-cache-example
-  memory: 1G
-  buildpacks:
-  - java_buildpack
-  path: build/libs/multi-redis-cache-failure-handling-0.0.1-SNAPSHOT.jar
