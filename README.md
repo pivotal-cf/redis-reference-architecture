@@ -2,8 +2,10 @@
 
 The purpose of this repository is to make it easier to use the Pivotal Cloud Foundry Redis Tile [Redis for PCF](http://docs.pivotal.io/redis). The repository contains example Cloud Foundry Apps that demonstrate using Redis for PCF.
 
-These example applications are written in Java and make use of the compatibility of
+The example application is written in Java and makes use of the compatibility of
 [Spring](https://docs.cloudfoundry.org/buildpacks/java/getting-started-deploying-apps/gsg-spring.html) with Cloud Foundry bound services.
+
+The example application takes advantage of recent updates to the Spring Java-CFEnv to automatically connect to Redis via TLS when available. In order to take advantage of this behaviour, it is necessary to disable the Java buildpack auto-reconfiguration `cf set-env <APP> JBP_CONFIG_SPRING_AUTO_RECONFIGURATION '{enabled: false}'` and instead explicitly use the Spring capability `cf set-env <APP> SPRING_PROFILES_ACTIVE cloud`. 
 
 ## Pros and Cons of the Example App
 Redis can be used for storing a wide range of data. No reference architecture is a good fit with all possible uses of Redis. Our existing examples focus on using redis as a cache. If you require that the data in Redis be stored in a specific structure, such as a specific list or set, this is likely not possible using Spring Cache. We do not yet have a reference architecture for you.
