@@ -70,13 +70,15 @@ In order for this to work we need to make some slight modification to the `manif
 Once the application is deployed, you can call the the `/token` endpoint in order to retrieve a given `id`. The first time an `id` is used, given it is not present in the cache, a new entry will be created. This operation takes time.
 
 ```bash
-$ curl http://redis-cache-example.apps.philippinebronze.cf-app.com/token\?id\=new_key
+$ curl http://redis-cache-example.<CF APPS DOMAIN>/token\?id\=new_key
 {"data":"b8506113-689f-4fa8-856e-34fb1a1077e1","id":"new_key","duration":3006}
 ```
 
 After the key is created, it is just a matter of retrieving it in the cache. This operation takes less time compared to when it was created, as we can see in the `duration` property in the response.
 
 ```bash
-$ curl http://redis-cache-example.apps.philippinebronze.cf-app.com/token\?id\=new_key
+$ curl http://redis-cache-example.<CF APPS DOMAIN>/token\?id\=new_key
 {"data":"b8506113-689f-4fa8-856e-34fb1a1077e1","id":"new_key","duration":3}
 ```
+
+You can figure out that the `CF APPS DOMAIN` is by running `cf domains` or `cf app redis-cache-example`.
