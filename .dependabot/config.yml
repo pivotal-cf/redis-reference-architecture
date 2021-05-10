@@ -1,6 +1,0 @@
----
-version: 1
-update_configs:
-- package_manager: "java:gradle"
-  directory: "/examples/redis-cache-failure-handling"
-  update_schedule: "daily"

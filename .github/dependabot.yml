@@ -1,0 +1,15 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/examples/redis-cache-failure-handling"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: org.springframework.boot:spring-boot-gradle-plugin
+    versions:
+    - 2.4.2
+    - 2.4.3
+  - dependency-name: io.pivotal.cfenv:java-cfenv-boot
+    versions:
+    - 2.2.5.RELEASE
