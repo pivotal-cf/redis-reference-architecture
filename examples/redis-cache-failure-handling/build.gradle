@@ -17,19 +17,19 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 17
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-redis')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compileOnly('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: '3.2.2'
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('org.projectlombok:lombok')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	implementation('io.pivotal.cfenv:java-cfenv-boot:2.4.2')
-	testCompile('junit:junit:4.13.2')
+	testImplementation('junit:junit:4.13.2')
 }
 
 
