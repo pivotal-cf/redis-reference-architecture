@@ -3,7 +3,9 @@ buildscript {
 		springBootVersion = '3.1.1'
 	}
 	repositories {
-		mavenCentral()
+	  maven {
+	    url System.getenv('CICD_ARTIFACTORY_URL') ?: ''
+	  }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -20,7 +22,9 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 17
 
 repositories {
-	mavenCentral()
+	  maven {
+	    url System.getenv('CICD_ARTIFACTORY_URL') ?: ''
+	  }
 }
 
 dependencies {
