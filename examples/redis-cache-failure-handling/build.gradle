@@ -5,6 +5,10 @@ buildscript {
 	repositories {
 	  maven {
 	    url System.getenv('CICD_ARTIFACTORY_URL') ?: ''
+	    credentials {
+	      username = System.getenv('USERNAME') ?: ''
+	      password = System.getenv('PASSWORD') ?: ''
+	    }
 	  }
 	}
 	dependencies {
@@ -22,9 +26,13 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 17
 
 repositories {
-	  maven {
-	    url System.getenv('CICD_ARTIFACTORY_URL') ?: ''
-	  }
+  maven {
+    url System.getenv('CICD_ARTIFACTORY_URL') ?: ''
+    credentials {
+      username = System.getenv('USERNAME') ?: ''
+      password = System.getenv('PASSWORD') ?: ''
+    }
+  }
 }
 
 dependencies {
